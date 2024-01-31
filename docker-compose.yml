@@ -1,7 +1,7 @@
 version: "3"
 services:
   springboot-app:
-    image: thiernos/springboot-app:1.1
+    image: thiernos/springboot-app:1.0
     container_name: springboot-app
     restart: always
     build: .
@@ -12,7 +12,7 @@ services:
     environment:
       MYSQL_HOST: mysqldb
       MYSQL_USER: root
-      MYSQL_PASSWORD: P@ssw0rd123
+      MYSQL_PASSWORD: P@ssw0rd123 
       MYSQL_PORT: 3306
 
   mysqldb:
@@ -31,7 +31,6 @@ services:
 volumes:
   app-volume:
     driver: local
-
 networks:
   springboot-net:
     name: springboot-net
