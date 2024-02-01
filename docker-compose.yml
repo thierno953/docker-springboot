@@ -1,12 +1,12 @@
 version: "3.8"
 services:
   springboot-app:
-    image: thiernos/springboot-app:1.0   Docker spring boot MySQL
+    image: thiernos/springboot-app:1.0   
     deploy:
-      replicas: 8
+      replicas: 8 
       restart_policy:
         condition: any
-      update_config:
+      update_config: 
         parallelism: 2
         delay: 10s
       rollback_config:
