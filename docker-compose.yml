@@ -1,13 +1,19 @@
-version: "3"
+version: "3.8"
 services:
   springboot-app:
     image: thiernos/springboot-app:1.0
-    restart: always
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 15s
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8000:8080"
     networks:
       - springboot-net
     environment:
@@ -15,6 +21,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: P@ssw0rd123
       MYSQL_PORT: 3306
+    restart: always
 
   mysqldb:
     container_name: mysqldb
@@ -28,6 +35,7 @@ services:
     environment:
       MYSQL_DATABASE: my_db
       MYSQL_ROOT_PASSWORD: P@ssw0rd123
+    restart: always
 
 volumes:
   app-volume:
@@ -35,5 +43,4 @@ volumes:
 
 networks:
   springboot-net:
-    name: springboot-net
-    driver: bridge
+    driver: overlay
