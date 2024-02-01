@@ -2,9 +2,7 @@ version: "3"
 services:
   springboot-app:
     image: thiernos/springboot-app:1.0
-    container_name: springboot-app
     restart: always
-    build: .
     ports:
       - "8080:8080"
     networks:
@@ -31,6 +29,7 @@ services:
 volumes:
   app-volume:
     driver: local
+    
 networks:
   springboot-net:
     name: springboot-net
