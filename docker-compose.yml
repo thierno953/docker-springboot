@@ -40,7 +40,6 @@ services:
 volumes:
   app-volume:
     driver: local
-
 networks:
   springboot-net:
     driver: overlay
