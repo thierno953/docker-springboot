@@ -1,5 +1,6 @@
 Dockerfile
 .dockerignore
+.mvn
 .git
 .gitignore
 docker-compose*
